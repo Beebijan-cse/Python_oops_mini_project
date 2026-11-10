@@ -1,3 +1,4 @@
+
 # 🏦 Bank Management System
 
 A beginner-friendly, console-based banking program built with Python. It demonstrates object-oriented programming through savings and current accounts, deposits, withdrawals, and account summaries.
@@ -10,6 +11,7 @@ A beginner-friendly, console-based banking program built with Python. It demonst
 - Display estimated savings interest at a fixed 5% rate
 - Show 0% interest for current accounts
 - Validate account details and transaction amounts
+- Reject non-finite amounts and amounts with more than two decimal places
 - Prevent duplicate account numbers during the current session
 - Use `Decimal` for money calculations
 
