@@ -1,20 +1,22 @@
 # 🏦 Bank Management System
 
-A console-based banking application built with Python. It demonstrates object-oriented programming through savings and current accounts, deposits, withdrawals, and account summaries.
+A beginner-friendly, console-based banking program built with Python. It demonstrates object-oriented programming through savings and current accounts, deposits, withdrawals, and account summaries.
 
 ## Features
 
 - Create savings and current accounts
 - Deposit and withdraw money
 - View one account or all accounts
-- Display account interest
-- Validate basic user input
-- Prevent duplicate account numbers
+- Display estimated savings interest at a fixed 5% rate
+- Show 0% interest for current accounts
+- Validate account details and transaction amounts
+- Prevent duplicate account numbers during the current session
+- Use `Decimal` for money calculations
 
 ## Technologies
 
 - Python 3
-- Python standard library (`abc`)
+- Python standard library: `abc` and `decimal`
 
 ## OOP Concepts Demonstrated
 
@@ -32,18 +34,28 @@ A console-based banking application built with Python. It demonstrates object-or
 
 ```text
 Python_oops_mini_project/
-├── oops.py
+├── bank_management.py
 └── README.md
 ```
 
+## Requirements
+
+- Python 3
+- No external packages
+
 ## How to Run
 
-Make sure Python 3 is installed. Then run:
+Clone the repository and enter its folder:
 
 ```bash
 git clone https://github.com/Beebijan-cse/Python_oops_mini_project.git
 cd Python_oops_mini_project
-python oops.py
+```
+
+Run the program:
+
+```bash
+python bank_management.py
 ```
 
 ## Application Menu
@@ -55,9 +67,9 @@ python oops.py
 5. Display All Accounts
 6. Exit
 
-## Note
+## Important Note
 
-This is an educational project. Account information is kept in memory and is lost when the program exits. It is not intended for real banking transactions.
+This is an educational project, not a real banking system. Account information is stored in memory and is lost when the program exits. The 5% savings interest is a simple example calculation, not a real bank rate.
 
 ## Author
 
