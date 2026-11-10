@@ -3,6 +3,32 @@ from decimal import Decimal, InvalidOperation
 
 
 SAVINGS_INTEREST_RATE = Decimal("0.05")
+CENT = Decimal("0.01")
+
+
+def read_money(prompt):
+    """Read a finite amount with no more than two decimal places."""
+    try:
+        amount = Decimal(input(prompt).strip())
+    except InvalidOperation:
+        print("Please enter a valid amount!")
+        return None
+
+    if not amount.is_finite():
+        print("Please enter a finite amount!")
+        return None
+
+    try:
+        rounded_amount = amount.quantize(CENT)
+    except InvalidOperation:
+        print("That amount is too large!")
+        return None
+
+    if amount != rounded_amount:
+        print("Please enter no more than two decimal places.")
+        return None
+
+    return amount
 
 
 class BankAccount(ABC):
@@ -93,14 +119,12 @@ class Bank:
                 print("Account number already exists!")
                 return
 
-        try:
-            balance = Decimal(input("Enter initial balance: ").strip())
-        except InvalidOperation:
-            print("Please enter a valid balance!")
+        balance = read_money("Enter initial balance: ")
+        if balance is None:
             return
 
-        if not balance.is_finite() or balance < 0:
-            print("Balance must be finite and non-negative!")
+        if balance < 0:
+            print("Balance must be non-negative!")
             return
 
         print("\n1. Savings Account")
@@ -133,26 +157,18 @@ class Bank:
         if account is None:
             return
 
-        try:
-            amount = Decimal(input("Enter deposit amount: ").strip())
-        except InvalidOperation:
-            print("Please enter a valid amount!")
-            return
-
-        account.deposit(amount)
+        amount = read_money("Enter deposit amount: ")
+        if amount is not None:
+            account.deposit(amount)
 
     def withdraw_money(self):
         account = self.find_account()
         if account is None:
             return
 
-        try:
-            amount = Decimal(input("Enter withdrawal amount: ").strip())
-        except InvalidOperation:
-            print("Please enter a valid amount!")
-            return
-
-        account.withdraw(amount)
+        amount = read_money("Enter withdrawal amount: ")
+        if amount is not None:
+            account.withdraw(amount)
 
     def display_account(self):
         account = self.find_account()
